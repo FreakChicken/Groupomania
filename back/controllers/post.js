@@ -4,7 +4,8 @@ exports.createPost = (req, res, next) => {
     // const postObject = JSON.parse(req.body.post);
     const post = new Post({
         userId: req.body.userId,
-        title: req.body.title,
+        name: req.body.name,
+        genre: req.body.genre,
         imageUrl: req.body.imageUrl,
         description: req.body.description,
         members: req.body.members,
@@ -24,6 +25,14 @@ exports.createPost = (req, res, next) => {
 
 exports.getAllPosts = (req, res, next) => {
     Post.find()
+        .then((post) => {
+            res.status(200).json(post);
+        })
+        .catch((error) => res.status(400).json({ error }));
+};
+
+exports.getOnePost = (req, res, next) => {
+    Post.findOne({ _id: req.params.id })
         .then((post) => {
             res.status(200).json(post);
         })
