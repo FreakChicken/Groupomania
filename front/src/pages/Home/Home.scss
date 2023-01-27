@@ -1,6 +1,21 @@
 .page_layout{
     width: 90%;
+    margin: 0 auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.card_list{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    li{
+        list-style-type: none;
+        width: 100%;
+    }
 }

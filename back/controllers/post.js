@@ -39,6 +39,12 @@ exports.getOnePost = (req, res, next) => {
         .catch((error) => res.status(400).json({ error }));
 };
 
+exports.updatePost = (req, res, next) => {
+    Post.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+        .then(() => res.status(200).json({ message: "Post modifié !" }))
+        .catch((error) => res.status(400).json({ error }));
+};
+
 exports.deletePost = (req, res, next) => {
     Post.findOne({ _id: req.params.id })
         .then(() => {
